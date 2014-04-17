@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
+    <parent>
+        <groupId>org.arquillian.extension</groupId>
+        <artifactId>arquillian-recorder-build</artifactId>
+        <version>1.0.0.Alpha3-SNAPSHOT</version>
+        <relativePath>../../arquillian-recorder/arquillian-recorder-build/pom.xml</relativePath>
+    </parent>
+
+    <!-- Artifact Configuration -->
+    <artifactId>arquillian-recorder-client</artifactId>
+    <packaging>jar</packaging>
+    <name>Arquillian Recorder Client</name>
+    <description>Arquillian Recorder Client</description>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- Arquillian dependencies -->
+        <dependency>
+            <groupId>org.arquillian.extension</groupId>
+            <artifactId>arquillian-recorder-reporter-spi</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

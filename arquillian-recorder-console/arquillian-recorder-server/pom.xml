@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
+    <parent>
+        <groupId>org.arquillian.extension</groupId>
+        <artifactId>arquillian-recorder-build</artifactId>
+        <version>1.0.0.Alpha3-SNAPSHOT</version>
+        <relativePath>../../arquillian-recorder/arquillian-recorder-build/pom.xml</relativePath>
+    </parent>
+
+    <!-- Artifact Configuration -->
+    <artifactId>arquillian-recorder-server</artifactId>
+    <packaging>war</packaging>
+    <name>Arquillian Recorder Server</name>
+    <description>Arquillian Recorder Server</description>
+
+    <properties>
+        <version.jboss_spec>3.0.0.Final</version.jboss_spec>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-web-6.0</artifactId>
+				<version>${version.jboss_spec}</version>
+				<type>pom</type>
+			</dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- Arquillian dependencies -->
+        <dependency>
+            <groupId>org.arquillian.extension</groupId>
+            <artifactId>arquillian-recorder-reporter-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-web-6.0</artifactId>
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
