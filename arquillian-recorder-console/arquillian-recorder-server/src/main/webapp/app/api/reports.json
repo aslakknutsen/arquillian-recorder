@@ -1,0 +1,32 @@
+{
+    "report": [
+        {
+            "class": [
+                {
+                    "name": "org.arquillian.recorder.reporter.impl.test.FakeTestClass",
+                    "video": {
+                        "path": "some/someVideo.mp4"
+                    },
+                    "method": [
+                        {
+                            "name": "someTestMethod",
+                            "result": "PASSED"
+                        },
+                        {
+                            "name": "someTestMethod2",
+                            "result": "FAILED",
+                            "screenshot": [
+                                {
+                                    "path": "niceScreenshot.jpg"
+                                },
+                                {
+                                    "path": "niceScreenshotBefore.jpg"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

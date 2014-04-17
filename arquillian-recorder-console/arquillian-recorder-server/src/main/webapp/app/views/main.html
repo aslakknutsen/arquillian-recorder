@@ -1,0 +1,55 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">arquillian reporter server ui</h3>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-4">
+
+  <ul>
+    <li ng-repeat="report in reports">
+      <a ng-click="selectReport($index)">
+        Report #{{ $index + 1 }}
+      </a>
+    </li>
+  </ul>
+
+    </div>
+
+  <div class="col-lg-6" ng-show="showReport">
+
+    <h2>Report #{{ activeReportNumber + 1}}</h2>
+
+
+    <div ng-repeat="class in activeReport.class">
+
+      <b>{{ class.name }}</b>
+
+        <video width="320" height="240" control>
+          <source src="{{ class.video.path }}" />
+          Your browser doesn't support video
+        </video>
+
+        <div ng-repeat="method in class.method" style="border: 1px solid">
+          {{method.result}}
+
+          <div ng-repeat="screenshot in method.screenshot">
+             <img src="{{screenshot.path}}" />
+          </div>
+        </div>
+
+
+      <hr />
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+</div>
