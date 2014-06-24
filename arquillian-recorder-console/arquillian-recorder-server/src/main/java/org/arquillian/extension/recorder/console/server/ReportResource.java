@@ -1,35 +1,37 @@
 package org.arquillian.extension.recorder.console.server;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.arquillian.recorder.reporter.model.Report;
 
+import com.google.gson.Gson;
+
 @Path("report")
+@RequestScoped
 public class ReportResource {
 
-    private Map<String, Report> repository = new HashMap<String, Report>();
+    @Inject
+    private Repository repository;
     
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public Collection<Report> all() {
-        return repository.values();
+    public Response all() {
+        return Response.ok(new Gson().toJson(repository.all())).build();
     }
     
     @POST
-    @Path("{id}")
     @Consumes(MediaType.APPLICATION_XML)
-    public void add(@PathParam("id") String id, Report report) {
-        repository.put(id, report);
+    public Response add(Report report) {
+        repository.put(report.getId(), report);
+        return Response.ok().build();
     }
 }

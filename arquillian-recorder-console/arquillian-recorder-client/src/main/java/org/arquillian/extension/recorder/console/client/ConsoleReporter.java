@@ -67,6 +67,7 @@ public class ConsoleReporter {
         @Override
         public Boolean call() throws Exception {
             HttpURLConnection con = (HttpURLConnection)new URL(baseURL).openConnection();
+            con.setDoOutput(true);
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/xml");
             OutputStream out = con.getOutputStream();

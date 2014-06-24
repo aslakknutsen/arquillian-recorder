@@ -18,6 +18,7 @@ package org.arquillian.recorder.reporter.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
@@ -48,8 +49,11 @@ import org.arquillian.recorder.reporter.model.entry.KeyValueEntry;
  *
  */
 @XmlRootElement(name = "report")
-@XmlType(propOrder = { "reportConfiguration", "propertyEntries", "extensionReports", "testSuiteReports" })
+@XmlType(propOrder = { "id", "reportConfiguration", "propertyEntries", "extensionReports", "testSuiteReports" })
 public class Report implements ReportEntry {
+
+    @XmlElement(name = "id")
+    private final String id = UUID.randomUUID().toString();
 
     @XmlElement(name = "reportConfiguration")
     private final ReportConfiguration reportConfiguration = new ReportConfiguration();
@@ -65,6 +69,10 @@ public class Report implements ReportEntry {
         @XmlElement(name = "file", type = FileEntry.class)
     })
     private final List<PropertyEntry> propertyEntries = new ArrayList<PropertyEntry>();
+
+    public String getId() {
+        return id;
+    }
 
     public ReportConfiguration getReportConfiguration() {
         return reportConfiguration;

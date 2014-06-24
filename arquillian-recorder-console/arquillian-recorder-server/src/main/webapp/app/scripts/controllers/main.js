@@ -1,6 +1,6 @@
 'use strict';
 
-var reportsPath = '/api/reports.json';
+var reportsPath = 'console/report/all';
 
 angular.module('arquillianReporterServerUiApp')
 
